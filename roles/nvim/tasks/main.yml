@@ -1,0 +1,28 @@
+- name: Ensure neovim is installed
+  package:
+    name: neovim
+    state: latest
+  become: yes
+
+- name: Ensures neovim conf directory exists
+  file: 
+    path: "{{ ansible_env.HOME }}/.config/nvim/autoload"
+    state: directory
+
+- name: Copy neovim conf file
+  copy:
+    src: neovim.conf
+    dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+  notify: 
+    - install vim plug
+    - install vim plugins
+
+- name: Update neovim plugins
+  command: nvim +PlugUpdate! +qall
+
+- name: Setup bash alias for neovim
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    state: present
+    line: alias vim=nvim
+    validate: "source {{ ansible_env.HOME }}/.bashrc"

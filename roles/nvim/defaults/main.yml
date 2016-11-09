@@ -1,0 +1,2 @@
+ansible_user: dimd
+ansible_port: 2223
