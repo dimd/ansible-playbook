@@ -1,3 +1,3 @@
 Description
 ===========
-Ansible playbook for my persona use.
+Ansible playbook for my personal use.
