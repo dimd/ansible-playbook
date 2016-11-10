@@ -1,4 +1,5 @@
 - hosts: all
   remote_user: "{{ ansible_user }}"
   roles:
+    - python
     - nvim

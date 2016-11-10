@@ -1,0 +1,17 @@
+- name: Ensure pip is installed
+  package:
+    name: python-pip
+    state: latest
+  become: yes
+
+- name: Ensure pip is updated
+  pip:
+    name: pip
+    state: latest
+  become: yes
+
+- name: Ensure tox is installed
+  pip:
+    name: tox
+    state: latest
+  become: yes
